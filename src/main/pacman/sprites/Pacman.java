@@ -95,6 +95,7 @@ public class Pacman implements ISpritesMetodos {
             
             Boolean colisionPresionada = checkColisionLaberintoPresionada(xMatriz, yMatriz, settings);
             Boolean colisionVelXY = checkColisionesVelXY(xMatriz, yMatriz, velXY, settings);
+            checkColisionPuntos(xMatriz, yMatriz, settings);
             
             if (!colisionPresionada) {
                 avanza = true;
@@ -122,6 +123,19 @@ public class Pacman implements ISpritesMetodos {
                 else if(settings.controles.isArriba()) return 2;
                 else if(settings.controles.isAbajo()) return 3;
         return 0;
+    }
+    
+    private Boolean checkColisionPuntos(int xMatriz, int yMatriz, Settings sett) {
+        // Revisa si esta a las afueras del mapa en ancho, esto porque existen escapatorias
+        if (xMatriz < 0 || xMatriz >= sett.laberinto.COLUMNAS) return false;
+        
+        if (sett.laberinto.matriz[yMatriz][xMatriz] == sett.laberinto.PUNTITO) {
+            sett.laberinto.setContadorPuntitos(sett.laberinto.getContadorPuntitos() - 1);
+            sett.laberinto.matriz[yMatriz][xMatriz] = sett.laberinto.VACIO;
+            sett.setPuntos(sett.getPuntos() + sett.SUMAR_PTOS_COME_PUNTITO);
+            return true;
+        }
+        return false;
     }
     
     private Boolean checkColisionLaberintoPresionada(int xMatriz, int yMatriz, Settings sett) {
