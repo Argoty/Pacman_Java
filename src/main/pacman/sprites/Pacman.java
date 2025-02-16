@@ -6,6 +6,7 @@ package main.pacman.sprites;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import main.pacman.audio.Sonidos;
 import main.pacman.interfaces.ISpritesMetodos;
 import main.pacman.settings.Settings;
 
@@ -41,6 +42,8 @@ public class Pacman implements ISpritesMetodos {
     private int[] velXY = {0,0};
     private int vel;
     private boolean avanza;
+    
+    private Sonidos sonidoWaka = new Sonidos();
 
     public Pacman(int x, int y, int tileX, int tileY, int direDefecto) {
         this.x = x * tileX;
@@ -131,8 +134,13 @@ public class Pacman implements ISpritesMetodos {
         
         if (sett.laberinto.matriz[yMatriz][xMatriz] == sett.laberinto.PUNTITO) {
             sett.laberinto.setContadorPuntitos(sett.laberinto.getContadorPuntitos() - 1);
+            
             sett.laberinto.matriz[yMatriz][xMatriz] = sett.laberinto.VACIO;
             sett.setPuntos(sett.getPuntos() + sett.SUMAR_PTOS_COME_PUNTITO);
+            
+            sonidoWaka.cargarAudio(sett.urlaudio.getWakawaka());
+            sonidoWaka.reproducirAudio();
+            
             return true;
         }
         return false;

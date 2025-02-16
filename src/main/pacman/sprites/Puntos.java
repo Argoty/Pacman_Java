@@ -51,7 +51,7 @@ public class Puntos implements ISpritesDibujo{
         } else {
             graphics.setColor(new Color(rgb[0], rgb[1], rgb[2]));
         }
-        if (settings.laberinto.matriz[matrizY][matrizX] == settings.laberinto.PUNTITO) {
+        if (settings.laberinto.matriz[matrizY][matrizX] == settings.laberinto.PUNTITO || settings.laberinto.matriz[matrizY][matrizX] == settings.laberinto.PUNTITO_GORDO) {
             graphics.fillOval(x + CENTRO_X - RADIO, y + CENTRO_Y - RADIO, tamano, tamano);
 
         }
