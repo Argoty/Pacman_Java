@@ -58,4 +58,60 @@ public class Fantasma implements ISpritesMetodos {
     public void dibujar(Graphics graphics, Settings settings) {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getTileX() {
+        return tileX;
+    }
+
+    public void setTileX(int tileX) {
+        this.tileX = tileX;
+    }
+
+    public int getTileY() {
+        return tileY;
+    }
+
+    public void setTileY(int tileY) {
+        this.tileY = tileY;
+    }
+
+    public int getDireDefecto() {
+        return direDefecto;
+    }
+
+    public void setDireDefecto(int direDefecto) {
+        this.direDefecto = direDefecto;
+    }
+
+    public Ventana getVentana() {
+        return ventana;
+    }
+
+    public void setVentana(Ventana ventana) {
+        this.ventana = ventana;
+    }
+
 }
